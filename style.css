@@ -1,0 +1,432 @@
+:root {
+  --border-size: 0.5vmin;
+  --border-style: solid;
+  --color-bolt: hsl(0deg 0% 40%);
+  --color-border: hsl(0 0% 8%);
+  --color-deck: hsl(10deg 10% 12%);
+  --color-deck-trim: hsl(0deg 20% 90%);
+  --color-text: hsl(0deg 0% 96%);
+  --color-truck: hsl(0deg 0% 30%);
+  --color-wheel: hsl(0deg 20% 80%);
+}
+
+body:has([value="lightning"]:checked) {
+  --color-bolt: hsl(237deg 74% 55%);
+  --color-border: hsl(215deg 76% 5%);
+  --color-deck: hsl(215deg 76% 5%);
+  --color-deck-trim: hsl(45deg 98% 49%);
+  --color-text: hsl(45deg 98% 49%);
+  --color-truck: hsl(237deg 74% 45%);
+  --color-wheel: hsl(359deg 70% 44%);
+}
+
+body:has([value="holiday"]:checked) {
+  --color-bolt: hsl(0deg 0% 98%);
+  --color-border: hsl(120deg 59% 22%);
+  --color-deck: radial-gradient(hsl(0deg 78% 60%) 15%, transparent 16%) 5vmin
+      5vmin / 2vmin 2vmin,
+    radial-gradient(hsl(0deg 78% 60%) 15%, transparent 16%) hsl(0deg 78% 52%) 0
+      0 / 2vmin 2vmin;
+  --color-deck-trim: hsl(0deg 0% 98%);
+  --color-text: hsl(0deg 0% 98%);
+  --color-truck: hsl(120deg 59% 22%);
+  --color-wheel: hsl(0deg 0% 98%);
+}
+
+body:has([value="vibes"]:checked) {
+  --color-bolt: hsl(0deg 0% 99%);
+  --color-border: hsl(215deg 76% 5%);
+  --color-deck: linear-gradient(
+    45deg,
+    hsl(240deg 71% 62%) 0%,
+    hsl(263deg 68% 60%) 7%,
+    hsl(281deg 63% 57%) 13%,
+    hsl(298deg 58% 53%) 19%,
+    hsl(311deg 73% 56%) 24%,
+    hsl(321deg 91% 59%) 29%,
+    hsl(327deg 100% 61%) 34%,
+    hsl(332deg 100% 62%) 39%,
+    hsl(339deg 100% 64%) 44%,
+    hsl(348deg 100% 67%) 49%,
+    hsl(358deg 100% 70%) 54%,
+    hsl(10deg 100% 68%) 58%,
+    hsl(19deg 100% 65%) 63%,
+    hsl(28deg 100% 63%) 69%,
+    hsl(35deg 100% 60%) 74%,
+    hsl(40deg 100% 58%) 80%,
+    hsl(45deg 100% 57%) 86%,
+    hsl(49deg 100% 57%) 93%,
+    hsl(55deg 93% 58%) 100%
+  );
+  --color-deck-trim: hsl(339deg 64% 96%);
+  --color-text: hsl(0deg 0% 99%);
+  --color-truck: hsl(45deg 0% 99%);
+  --color-wheel: hsl(352deg 100% 81%);
+}
+
+body:has([value="smiles"]:checked) {
+  --color-bolt: hsl(323deg 51% 55%);
+  --color-deck-1: hsl(45deg 98% 49%);
+  --color-deck-2: hsl(43deg 100% 40%);
+  --color-deck: linear-gradient(var(--color-deck-1) 60%, transparent 61%) 51%
+      77%/ 25vmin 5vmin no-repeat,
+    radial-gradient(var(--color-deck-2) 15%, transparent 16%) 51% 0%/ 20vmin 20vmin
+      no-repeat,
+    radial-gradient(var(--color-deck-2) 15%, transparent 16%) 61.4% 7%/ 9vmin 9vmin
+      no-repeat,
+    radial-gradient(var(--color-deck-2) 15%, transparent 16%)
+      var(--color-deck-1) 39% 7%/ 9vmin 9vmin no-repeat;
+  --color-deck-trim: hsl(0 20% 100%);
+  --color-text: hsl(43deg 100% 40%);
+  --color-truck: hsl(0deg 0% 64%);
+  --color-wheel: hsl(121deg 26% 39%);
+}
+
+body:has([value="pickle"]:checked) {
+  --color-bolt: hsl(145deg 78% 15%);
+  --color-border: hsl(145deg 78% 15%);
+  --color-deck: radial-gradient(hsl(145deg 78% 44%) 15%, transparent 16%)
+      0.25vmin 0 / 5vmin 5vmin,
+    radial-gradient(hsl(145deg 78% 50%) 15%, transparent 16%)
+      hsl(145deg 78% 44%) 0 0/ 5vmin 5vmin;
+  --color-deck-trim: hsl(0deg 20% 100%);
+  --color-text: hsl(145deg 78% 25%);
+  --color-truck: hsl(145deg 78% 70%);
+  --color-wheel: hsl(145deg 78% 29%);
+}
+
+body:has([value="png"]:checked) {
+  --color-bolt: hsl(0deg 0% 0%);
+  --color-deck: repeating-conic-gradient(white 0 90deg, lightgray 0 180deg) 0 0/5vmin
+    5vmin;
+  --color-deck-trim: hsl(0deg 20% 100%);
+  --color-text: hsl(0deg 0% 0%);
+  --color-truck: hsl(0deg 0% 84%);
+  --color-wheel: hsl(0deg 0% 15%);
+}
+
+body:has([value="debug"]:checked) {
+  --border-style: dashed;
+  --color-bolt: red;
+  --color-border: red;
+  --color-deck: transparent;
+  --color-deck-trim: transparent;
+  --color-text: red;
+  --color-truck: transparent;
+  --color-wheel: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
+  overflow: hidden;
+  font-family: system-ui;
+  transform-style: preserve-3d;
+  perspective: 600px;
+  cursor: -webkit-grab;
+  cursor: grab;
+  transition: background-color 200ms ease-out;
+}
+
+body:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+body:has([id="wild-mode"]:checked) {
+  background-color: papayawhip;
+}
+
+.header,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  padding: 1rem;
+}
+
+.header {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer {
+  gap: 0.125rem;
+  bottom: 1rem;
+  left: 1rem;
+  justify-self: start;
+}
+
+.select {
+  --color-border: hsl(0 0% 70%);
+  position: relative;
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  cursor: initial;
+}
+
+.select::after {
+  content: "";
+  grid-area: select;
+  justify-self: end;
+  -webkit-margin-end: 0.5rem;
+          margin-inline-end: 0.5rem;
+  width: 0.5em;
+  aspect-ratio: 16/9;
+  background-color: var(--color-border);
+  -webkit-clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+          clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+.select select {
+  all: unset;
+  outline: revert;
+  grid-area: select;
+  background-color: hsl(0 0% 98%);
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  line-height: 1.2;
+  padding: 0.25rem 1.25rem 0.25rem 0.5rem;
+}
+
+[type="checkbox"] + label {
+  font-size: 0.8em;
+}
+
+.scene {
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 5vmin;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.25, 1, 0.5, 1);
+  transform: rotateX(calc(var(--y) * -1deg)) rotateZ(calc(var(--x) / 2 * 1deg));
+}
+
+body:has([id="wild-mode"]:checked) .scene {
+  transform: translate3d(
+      calc(var(--x) / 2 * -1px),
+      calc(var(--y) / 2 * 1px),
+      calc(var(--y) * 1px)
+    )
+    rotateX(calc(var(--y) * -1deg)) rotateZ(calc(var(--x) * 1deg));
+}
+
+.board {
+  --padding: 1em;
+  position: relative;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding) calc(var(--padding) * 2);
+  min-inline-size: 50vmin;
+  font-weight: bold;
+  color: var(--color-text);
+  background: var(--color-deck);
+  border-radius: 360px;
+  border: var(--border-size) var(--border-style) var(--color-border);
+  box-shadow: 0 0 0 var(--border-size) var(--color-deck-trim) inset;
+  transform-style: preserve-3d;
+}
+
+.board::before,
+.board::after {
+  content: "::";
+  position: relative;
+  top: -0.085em;
+  color: var(--color-bolt);
+}
+
+.wheel {
+  --position: calc(var(--padding) * 2 - 0.15em);
+  position: absolute;
+  width: 0.8em;
+  aspect-ratio: 1;
+  background: var(--color-wheel);
+  border: inherit;
+  border-radius: 50%;
+  transform-origin: center;
+  transform: rotateX(-90deg) translateY(55%);
+  box-shadow: 0.3vmin -0.5vmin 0 hsl(0 0% 0% / 0.2) inset;
+}
+
+.wheel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 15%;
+  aspect-ratio: 1;
+  border: inherit;
+  background: var(--color-deck);
+  border-radius: inherit;
+}
+
+.wheel:nth-of-type(1) {
+  top: 0;
+  left: var(--position);
+}
+
+.wheel:nth-of-type(2) {
+  top: 0;
+  right: var(--position);
+}
+
+.wheel:nth-of-type(3) {
+  bottom: 0;
+  left: var(--position);
+}
+
+.wheel:nth-of-type(4) {
+  bottom: 0;
+  right: var(--position);
+}
+
+.truck {
+  --offset: 0.1em;
+  position: absolute;
+  top: 50%;
+  width: 0.25em;
+  height: 70%;
+  background: var(--color-truck);
+  border-inline: calc(var(--border-size) / 2) var(--border-style)
+    var(--color-border);
+  box-shadow: -0.3vmin 0 0 hsl(0 0% 0% / 0.2) inset;
+  transform: translateY(-50%) rotateY(90deg) translateX(175%);
+}
+
+.truck::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 100%;
+  height: 15%;
+  margin-inline: auto;
+  border-inline: inherit;
+  background-color: inherit;
+  box-shadow: -0.4vmin 0 0 hsl(0 0% 0% / 0.2) inset;
+  transform: translateY(-50%) rotate(-90deg) translateY(-64%);
+}
+
+.truck:nth-last-child(1) {
+  position: absolute;
+  left: calc(var(--padding) * 2 + var(--offset));
+}
+
+.truck:nth-last-child(2) {
+  position: absolute;
+  right: calc(var(--padding) * 2 + var(--offset));
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  left: -1em;
+  margin: auto;
+  width: 2em;
+  font-size: 0.5em;
+  color: var(--color-text);
+  transform: rotateX(180deg);
+  text-transform: uppercase;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -1.25vmin;
+  margin: auto;
+  width: 8.6vmin;
+  aspect-ratio: 1;
+  border: var(--border-size) var(--border-style) var(--color-text);
+}
+
+.logo::after {
+  position: absolute;
+  font-size: 1.75em;
+  font-weight: normal;
+  transform: translateY(-50%);
+}
+
+body:has([value="lightning"]:checked) .logo::after {
+  content: "";
+  top: 50%;
+  right: calc(130%);
+  width: 1.5em;
+  aspect-ratio: 1;
+  background: var(--color-text);
+  -webkit-clip-path: polygon(50% 40%, 75% 40%, 40% 100%, 50% 60%, 25% 60%, 60% 0);
+          clip-path: polygon(50% 40%, 75% 40%, 40% 100%, 50% 60%, 25% 60%, 60% 0);
+}
+
+body:has([value="holiday"]:checked) .logo::after {
+  content: "❄\FE0E  ❄\FE0E  ❄\FE0E";
+  top: 50%;
+  right: 160%;
+  aspect-ratio: 1;
+}
+
+body:has([value="smiles"]:checked) .logo::after {
+  content: "";
+  width: 12vmin;
+  top: 45%;
+  left: -50%;
+  aspect-ratio: 1;
+  background: var(--color-deck-1);
+  z-index: -1;
+}
+
+.warning {
+  display: none;
+}
+
+@supports not (selector(:has(*))) {
+  strong {
+    font-weight: bold;
+  }
+
+  code {
+    position: relative;
+    top: -0.04em;
+    font-size: 1.1em;
+    font-family: "Courier", monospace;
+  }
+
+  .warning {
+    display: block;
+    flex: 1 0 100%;
+    font-size: 0.8em;
+    line-height: 1.2;
+    text-align: center;
+    background-color: papayawhip;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+
+  .footer {
+    display: none;
+  }
+}
